@@ -16,6 +16,9 @@ import '../dart_basic_auth.dart';
 //  resource owner type when using package:aqueduct/managed_auth.
 */
 
-class User extends ManagedObject<_User> implements _User, ManagedAuthResourceOwner<_User>{}
+class User extends ManagedObject<_User> implements _User, ManagedAuthResourceOwner<_User>{
+  @Serialize(input: true, output: false)
+  String password;
+}
 
 class _User extends ResourceOwnerTableDefinition{}

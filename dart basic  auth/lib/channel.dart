@@ -2,6 +2,7 @@ import 'package:aqueduct/managed_auth.dart';
 import './model/user.dart';
 import './utils//db.connectivity.dart';
 import './utils/configuration.dart';
+import './controller/register.controller.dart';
 import 'dart_basic_auth.dart';
 
 
@@ -39,6 +40,10 @@ class DartBasicAuthChannel extends ApplicationChannel {
       .linkFunction((request) async {
         return Response.ok({"key": "value"});
       });
+
+    router
+      .route('/register')
+      .link(() => RegisterController(context, authServer));
 
     return router;
   }
