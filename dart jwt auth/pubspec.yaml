@@ -1,4 +1,4 @@
-name: dart_basic_auth
+name: dart_jwt_auth
 description: An empty Aqueduct application.
 version: 0.0.1
 author: stable|kernel <jobs@stablekernel.com>

@@ -1,4 +1,4 @@
-# dart_basic_auth
+# dart_jwt_auth
 
 ## Running the Application Locally
 

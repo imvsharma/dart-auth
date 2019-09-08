@@ -1,10 +1,10 @@
-import 'dart_basic_auth.dart';
+import 'dart_jwt_auth.dart';
 
 /// This type initializes an application.
 ///
 /// Override methods in this class to set up routes and initialize services like
 /// database connections. See http://aqueduct.io/docs/http/channel/.
-class DartBasicAuthChannel extends ApplicationChannel {
+class DartJwtAuthChannel extends ApplicationChannel {
   /// Initialize services in this method.
   ///
   /// Implement this method to initialize services, read values from [options]

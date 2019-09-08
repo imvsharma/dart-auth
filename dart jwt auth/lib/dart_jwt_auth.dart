@@ -1,7 +1,7 @@
-/// dart_basic_auth
+/// dart_jwt_auth
 ///
 /// A Aqueduct web server.
-library dart_basic_auth;
+library dart_jwt_auth;
 
 export 'dart:async';
 export 'dart:io';

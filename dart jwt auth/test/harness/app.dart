@@ -1,12 +1,12 @@
-import 'package:dart_basic_auth/dart_basic_auth.dart';
+import 'package:dart_jwt_auth/dart_jwt_auth.dart';
 import 'package:aqueduct_test/aqueduct_test.dart';
 
-export 'package:dart_basic_auth/dart_basic_auth.dart';
+export 'package:dart_jwt_auth/dart_jwt_auth.dart';
 export 'package:aqueduct_test/aqueduct_test.dart';
 export 'package:test/test.dart';
 export 'package:aqueduct/aqueduct.dart';
 
-/// A testing harness for dart_basic_auth.
+/// A testing harness for dart_jwt_auth.
 ///
 /// A harness for testing an aqueduct application. Example test file:
 ///
@@ -19,7 +19,7 @@ export 'package:aqueduct/aqueduct.dart';
 ///           });
 ///         }
 ///
-class Harness extends TestHarness<DartBasicAuthChannel> {
+class Harness extends TestHarness<DartJwtAuthChannel> {
   @override
   Future onSetUp() async {
 

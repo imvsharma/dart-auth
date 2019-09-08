@@ -1,7 +1,7 @@
-import 'package:dart_basic_auth/dart_basic_auth.dart';
+import 'package:dart_jwt_auth/dart_jwt_auth.dart';
 
 Future main() async {
-  final app = Application<DartBasicAuthChannel>()
+  final app = Application<DartJwtAuthChannel>()
       ..options.configurationFilePath = "config.yaml"
       ..options.port = 8888;
 
