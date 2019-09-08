@@ -1,3 +1,5 @@
+import 'package:aqueduct/managed_auth.dart';
+import './model/user.dart';
 import './utils//db.connectivity.dart';
 import './utils/configuration.dart';
 import 'dart_basic_auth.dart';
@@ -5,6 +7,8 @@ import 'dart_basic_auth.dart';
 
 class DartBasicAuthChannel extends ApplicationChannel {
   ManagedContext context;
+  AuthServer authServer;
+
   @override
   Future prepare() async {
     logger.onRecord.listen((rec) => print("$rec ${rec.error ?? ""} ${rec.stackTrace ?? ""}"));
@@ -17,6 +21,9 @@ class DartBasicAuthChannel extends ApplicationChannel {
       config.database.port,
       config.database.databaseName);
     context = ManagedContext(dataModel, psc);
+
+    final authStorage = ManagedAuthDelegate<User>(context);
+    authServer = AuthServer(authStorage);
   }
 
   Future willOpen() async {
