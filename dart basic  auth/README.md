@@ -1,21 +1,16 @@
-# dart_basic_auth
+# Dart Basic Auth with OAuth 2.0
 
-## Running the Application Locally
+##  Prerequisite
+    1.  Dart (Programming Language)
+    2.  Aqueduct (Web Framework of Dart)
+    3.  Postgres (Relational Database)
 
-Run `aqueduct serve` from this directory to run the application. For running within an IDE, run `bin/main.dart`. By default, a configuration file named `config.yaml` will be used.
+##  Running the Application
 
-To generate a SwaggerUI client, run `aqueduct document client`.
+1.  Clone the repo `git clone https://github.com/imvsharma/dart-auth.git`
+2.  Run `aqueduct serve`
 
-## Running Application Tests
+##  End-points
+1.  Create user: `curl -X POST http://localhost:8888/register -H 'Content-Type: application/json' -d '{"username":"bob", "password":"password"}'`
 
-To run all tests for this application, run the following in this directory:
-
-```
-pub run test
-```
-
-The default configuration file used when testing is `config.src.yaml`. This file should be checked into version control. It also the template for configuration files used in deployment.
-
-## Deploying an Application
-
-See the documentation for [Deployment](https://aqueduct.io/docs/deploy/).
+2.  Get token: `curl -X POST http://localhost:8888/auth/token -H 'Authorization: Basic Y29tLmFwcC50ZXN0Og==' -H 'Content-Type: application/x-www-form-urlencoded' -d 'username=bob&password=password&grant_type=password'`
