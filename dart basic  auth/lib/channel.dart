@@ -35,6 +35,11 @@ class DartBasicAuthChannel extends ApplicationChannel {
   @override
   Controller get entryPoint {
     final router = Router();
+
+    router
+    .route('/auth/token')
+    .link(() => AuthController(authServer));
+    
     router
       .route("/example")
       .linkFunction((request) async {
