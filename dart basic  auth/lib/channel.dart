@@ -1,10 +1,8 @@
-import 'dart_basic_auth.dart';
+import './utils//db.connectivity.dart';
 import './utils/configuration.dart';
+import 'dart_basic_auth.dart';
 
-/// This type initializes an application.
-///
-/// Override methods in this class to set up routes and initialize services like
-/// database connections. See http://aqueduct.io/docs/http/channel/.
+
 class DartBasicAuthChannel extends ApplicationChannel {
   ManagedContext context;
   @override
@@ -19,6 +17,11 @@ class DartBasicAuthChannel extends ApplicationChannel {
       config.database.port,
       config.database.databaseName);
     context = ManagedContext(dataModel, psc);
+  }
+
+  Future willOpen() async {
+    final config = BasicAuthConfiguration(options.configurationFilePath);
+    await createDatabaseSchema(context, config.database.isTemporary);
   }
 
   @override
