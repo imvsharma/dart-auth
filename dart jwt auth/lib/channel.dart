@@ -1,5 +1,5 @@
 import 'dart_jwt_auth.dart';
-
+import './utils/configuration.dart';
 /// This type initializes an application.
 ///
 /// Override methods in this class to set up routes and initialize services like
@@ -14,6 +14,15 @@ class DartJwtAuthChannel extends ApplicationChannel {
   @override
   Future prepare() async {
     logger.onRecord.listen((rec) => print("$rec ${rec.error ?? ""} ${rec.stackTrace ?? ""}"));
+    final config = JWTAuthConfiguration(options.configurationFilePath);
+    final dataModel = ManagedDataModel.fromCurrentMirrorSystem();
+    final psc = PostgreSQLPersistentStore.fromConnectionInfo(
+      config.database.username,
+      config.database.password,
+      config.database.host,
+      config.database.port,
+      config.database.databaseName);
+    context = ManagedContext(dataModel, psc);
   }
 
   /// Construct the request channel.
