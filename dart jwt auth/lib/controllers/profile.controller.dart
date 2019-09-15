@@ -12,7 +12,8 @@ class ProfileController extends ResourceController {
   @Operation.get()
   Future<Response> profile() async {
     final query = Query<User>(context)
-      ..where((u) => u.username).equalTo(request.attachments['username'] as String);
+      ..where((u) => u.username).equalTo(request.attachments['username'] as String)
+      ..returningProperties((u) => [u.email, u.username]);
     return Response.ok(await query.fetchOne());
   }
 }
