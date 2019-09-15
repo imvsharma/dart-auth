@@ -1,8 +1,8 @@
 import 'package:aqueduct/managed_auth.dart';
+import './controller/register.controller.dart';
 import './model/user.dart';
 import './utils//db.connectivity.dart';
 import './utils/configuration.dart';
-import './controller/register.controller.dart';
 import 'dart_basic_auth.dart';
 
 

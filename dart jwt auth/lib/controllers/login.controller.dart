@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:aqueduct/aqueduct.dart';
 import '../model/user.model.dart';
 import '../utils/hash.dart';
+import '../helpers/auth.provider.dart';
 
 
 class LoginController extends ResourceController {
@@ -32,7 +33,11 @@ class LoginController extends ResourceController {
       );
     } else {
       if(fetchedUser.password == Hash.create(user.password)){
-      return Response.ok(fetchedUser);
+      return Response.ok({
+        "success": true,
+        "message": 'Successfully login',
+        "token": await AuthProvider().auth(user.username)
+      });
       } else {
         return Response.badRequest(
           body: {
