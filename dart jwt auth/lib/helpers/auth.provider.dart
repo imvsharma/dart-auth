@@ -19,6 +19,7 @@ class AuthProvider {
     try{
       final String token = request.raw.headers['authorization'][0].replaceAll('Bearer ', '');
       final JwtClaim claim = verifyJwtHS256Signature(token, 'ASDF_QWERTY_REPLACE_ME_PLZ_THX');
+      print(claim);
       claim.validate(issuer: 'ACME Widgets Corp',audience: 'example.com');
       return true;
     }catch (e) {

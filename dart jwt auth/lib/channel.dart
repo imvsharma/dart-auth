@@ -1,7 +1,10 @@
+import 'package:dart_jwt_auth/controllers/profile.controller.dart';
+
 import './utils/configuration.dart';
 import 'dart_jwt_auth.dart';
 import './controllers/signup.controller.dart';
 import './controllers/login.controller.dart';
+import './middleware/auth.middleware.dart';
 /// This type initializes an application.
 ///
 /// Override methods in this class to set up routes and initialize services like
@@ -39,6 +42,11 @@ class DartJwtAuthChannel extends ApplicationChannel {
     router
       .route('/user/login')
       .link(()=> LoginController(context));
+
+    router
+      .route('/user/profile')
+      .link(() => AuthMiddleware())
+      .link(() => ProfileController(context));
       
 
     return router;
