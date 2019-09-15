@@ -33,7 +33,7 @@ class DartJwtAuthChannel extends ApplicationChannel {
 
     router
       .route('/user/signup')
-      .link(()=> SignupController());
+      .link(()=> SignupController(context));
       
 
     return router;
