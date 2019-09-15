@@ -14,4 +14,15 @@ class AuthProvider {
     final String token = issueJwtHS256(claim, 'ASDF_QWERTY_REPLACE_ME_PLZ_THX');
     return token;
   }
+
+  Future<bool> validate(Request request) async {
+    try{
+      final String token = request.raw.headers['authorization'][0].replaceAll('Bearer ', '');
+      final JwtClaim claim = verifyJwtHS256Signature(token, 'ASDF_QWERTY_REPLACE_ME_PLZ_THX');
+      claim.validate(issuer: 'ACME Widgets Corp',audience: 'example.com');
+      return true;
+    }catch (e) {
+      return false;
+    }
+  }
 }
