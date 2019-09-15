@@ -5,8 +5,11 @@ import '../utils/hash.dart';
 
 
 class SignupController extends ResourceController {
+
   SignupController(this.context);
+
   final ManagedContext context;
+  
   @Operation.post()
   Future<Response> createUser(@Bind.body() User user) async {
     user.password = Hash.create(user.password);

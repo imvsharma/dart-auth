@@ -1,5 +1,3 @@
-
-
 import '../dart_jwt_auth.dart';
 
 class User extends ManagedObject<_User> implements _User{
