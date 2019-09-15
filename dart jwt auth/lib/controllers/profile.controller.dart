@@ -10,8 +10,9 @@ class ProfileController extends ResourceController {
   final ManagedContext context;
   
   @Operation.get()
-  Future<Response> profile(Request request) async {
-    print(request);
-    return Response.ok('Profile api');
+  Future<Response> profile() async {
+    final query = Query<User>(context)
+      ..where((u) => u.username).equalTo(request.attachments['username'] as String);
+    return Response.ok(await query.fetchOne());
   }
 }
